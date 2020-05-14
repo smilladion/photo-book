@@ -4,8 +4,8 @@
 
         <hr>
 
-        <b-form-file accept="image/*" drop-placeholder="Omnom, that is a tasty photo" multiple placeholder="Drop your photos here" ref="file-input"
-                     v-model="files"></b-form-file>
+        <b-form-file :file-name-formatter="fileInputText" accept="image/*" browse-text="Add photos" drop-placeholder="Omnom, that is a tasty photo" multiple
+                     placeholder="Drop your photos here" ref="file-input" v-model="files"></b-form-file>
 
         <FileMessage :files="files" :uploadStarted="uploadStarted" @change="invalidChanged"></FileMessage>
         <FileList :files="files" :invalid="invalid" :uploaded="uploaded"></FileList>
@@ -50,6 +50,9 @@
             }
         },
         methods: {
+            fileInputText(files) {
+                return files.length - this.invalid.length + ' valid photo' + (files.length > 1 ? 's' : '') + ' selected'
+            },
             invalidChanged(invalid) {
                 this.invalid = invalid
             },
