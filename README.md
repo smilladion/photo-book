@@ -1,4 +1,4 @@
-# Photo Book 🖼
+# Photo Book 📷
 
 ## Project setup
 ```
