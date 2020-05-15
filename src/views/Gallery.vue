@@ -23,7 +23,7 @@
             for at oprette din fotobog.
         </b-alert>
 
-        <h6 class="text-muted text-center my-4">
+        <h6 class="text-muted text-center my-4" v-if="state.photos.length !== 0">
             Tryk på et foto for at redigere det.
         </h6>
 
