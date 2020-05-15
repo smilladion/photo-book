@@ -10,7 +10,7 @@
             {{ files.length }} billede{{ files.length > 1 ? 'r' : ''}} blev valgt, er det korrekt?
         </h6>
         <h6 class="text-danger text-center mt-4" v-else>
-            {{ invalid.length }} fil{{ files.length > 1 ? 'er' : ''}} var ikke gyldig{{ files.length > 1 ? 'e' : ''}}, kun billedfiler er tilladt.
+            {{ invalid.length }} fil{{ invalid.length > 1 ? 'er' : ''}} var ikke gyldig{{ invalid.length > 1 ? 'e' : ''}}, kun billedfiler er tilladt.
         </h6>
     </div>
 </template>

@@ -1,14 +1,14 @@
 <template>
     <section>
-        <h3>Edit photo <small class="text-muted">{{ photo.tag }}</small></h3>
+        <h3>Rediger billede <small class="text-muted">{{ photo.tag }}</small></h3>
 
         <hr>
 
         <PhotoEditor :photo="photo" ref="photo-editor"></PhotoEditor>
 
         <p class="text-center my-4">
-            <b-button @click="saveClicked" class="mr-1" variant="success">Finish and save</b-button>
-            <b-button @click="returnPrevious" variant="danger">Cancel edit</b-button>
+            <b-button @click="saveClicked" class="mr-1" variant="success">Gem billede</b-button>
+            <b-button @click="returnPrevious" variant="danger">Annuller</b-button>
         </p>
     </section>
 </template>
