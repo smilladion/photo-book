@@ -51,7 +51,7 @@
         },
         methods: {
             fileInputText(files) {
-                let valid = files.length - this.invalid.length;
+                let valid = files.length - this.invalid.length
                 return valid + ' gyldig' + (valid > 1 || valid === 0 ? 'e' : 't') + ' billede' + (valid > 1 || valid === 0 ? 'r' : '') + ' valgt'
             },
             invalidChanged(invalid) {
@@ -86,10 +86,8 @@
 
                         state.photos.push({
                             src: e.target.result,
-                            tag: file.name.toLowerCase()
+                            tag: file.name.toLowerCase().slice(0, -4)
                         })
-
-                        // TODO: Upload to imgur instead of this ghetto array
 
                         readFile(files, state)
                     }

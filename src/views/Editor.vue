@@ -1,8 +1,15 @@
 <template>
     <section>
-        <h3>Rediger billede <small class="text-muted">{{ photo.tag }}</small></h3>
+        <h3>Rediger billede</h3>
 
         <hr>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Titel</span>
+            </div>
+            <input type="text" class="form-control" v-model="newName" :placeholder="photo.tag" :aria-label="photo.tag" aria-describedby="basic-addon1">
+        </div>
 
         <PhotoEditor :photo="photo" ref="photo-editor"></PhotoEditor>
 
@@ -25,7 +32,9 @@
             photo: Object
         },
         data() {
-            return {}
+            return {
+                newName: ''
+            }
         },
         methods: {
             returnPrevious() {
@@ -34,6 +43,10 @@
             saveClicked() {
                 this.$refs['photo-editor'].saveBase64()
                 this.returnPrevious()
+
+                if (this.newName.length > 0) {
+                    this.photo.tag = this.newName
+                }
             }
         },
         watch: {}

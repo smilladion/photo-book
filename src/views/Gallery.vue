@@ -24,7 +24,7 @@
             Tryk på et foto for at redigere det.
         </h6>
 
-        <ImageGrid :photos="state.photos" @photoClicked="photoClicked"></ImageGrid>
+        <ImageGrid :photos="state.photos" :styleObject="styleObject" @photoClicked="photoClicked"></ImageGrid>
     </section>
 </template>
 
@@ -43,7 +43,17 @@
             return {
                 state: this.sharedState,
                 themes: null,
-                activeTheme: -1
+                activeTheme: -1,
+
+                styleObject: {
+                    color: '',
+                    backgroundColor: '',
+                    border: '',
+                    borderRadius: '',
+                    fontFamily: '',
+                    padding: '0',
+                    fontSize: ''
+                }
             }
         },
         methods: {
@@ -52,8 +62,19 @@
             },
             themeClicked(theme) {
                 this.activeTheme = theme.id
+                this.styleObject.color = '#' + theme.styles.primaryColor
+                this.styleObject.backgroundColor = '#' + theme.styles.secondaryColor
+                this.styleObject.border = '8px solid #' + theme.styles.secondaryColor
+                this.styleObject.fontFamily = theme.styles.fontName
+                this.styleObject.borderRadius = '0px'
 
-                // TODO: Use theme object above to theme this page
+                if (theme.name === 'Børnebog') {
+                    this.styleObject.fontSize = '30px'
+                } else if (theme.name === 'Rejsebog') {
+                    this.styleObject.fontSize = '18px'
+                } else if (theme.name === 'Formel') {
+                    this.styleObject.fontSize = '20px'
+                }
             }
         },
         mounted() {
