@@ -12,7 +12,7 @@
         <b-list-group :class="{ 'mt-4': files.length !== invalid.length }">
             <b-list-group-item :key="file.name" v-for="(file, index) in files" v-if="invalid.includes(file)">
                 <b-badge pill variant="danger">{{ index + 1 }}</b-badge>
-                {{ file.name.toLowerCase() }} (invalid)
+                {{ file.name.toLowerCase() }} (ugyldig)
             </b-list-group-item>
         </b-list-group>
     </div>

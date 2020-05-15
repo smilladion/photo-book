@@ -18,7 +18,8 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 let state = {
-    photos: []
+    photos: [],
+    activeTheme: -1
 }
 
 new Vue({

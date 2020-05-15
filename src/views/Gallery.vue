@@ -5,9 +5,12 @@
             <b-col class="text-right">
                 <b-dropdown right text="Vælg tema" variant="outline-primary">
                     <b-dropdown-item disabled v-if="themes === null">Loading themes</b-dropdown-item>
-                    <b-dropdown-item :active="theme.id === activeTheme" :key="theme.id" @click="themeClicked(theme)" v-else v-for="theme in themes['themes']">{{
-                        theme.name }}
-                    </b-dropdown-item>
+                    <template v-else>
+                        <b-dropdown-item :active="state.activeTheme === -1" @click="resetTheme">Normal</b-dropdown-item>
+                        <b-dropdown-item :active="theme.id === state.activeTheme" :key="theme.id" @click="themeClicked(theme)" v-for="theme in themes['themes']">
+                            {{ theme.name }}
+                        </b-dropdown-item>
+                    </template>
                 </b-dropdown>
             </b-col>
         </b-row>
@@ -43,25 +46,36 @@
             return {
                 state: this.sharedState,
                 themes: null,
-                activeTheme: -1,
 
                 styleObject: {
                     color: '',
-                    backgroundColor: '',
-                    border: '',
-                    borderRadius: '',
+                    backgroundColor: 'white',
+                    border: '8px solid white',
+                    borderRadius: '0',
                     fontFamily: '',
                     padding: '0',
-                    fontSize: ''
+                    fontSize: '18px'
                 }
             }
         },
         methods: {
+            resetTheme() {
+                this.state.activeTheme = -1
+                this.styleObject = {
+                    color: '',
+                    backgroundColor: 'white',
+                    border: '8px solid white',
+                    borderRadius: '0',
+                    fontFamily: '',
+                    padding: '0',
+                    fontSize: '18px'
+                }
+            },
             photoClicked(photo) {
                 this.$router.push({name: 'Editor', params: {photo: photo}})
             },
             themeClicked(theme) {
-                this.activeTheme = theme.id
+                this.state.activeTheme = theme.id
                 this.styleObject.color = '#' + theme.styles.primaryColor
                 this.styleObject.backgroundColor = '#' + theme.styles.secondaryColor
                 this.styleObject.border = '8px solid #' + theme.styles.secondaryColor
@@ -80,7 +94,13 @@
         mounted() {
             fetch('https://itu-sdbg-s2020.now.sh/api/themes')
                 .then(stream => stream.json())
-                .then(json => this.themes = json)
+                .then(json => {
+                    this.themes = json
+
+                    if (this.state.activeTheme !== -1) {
+                        this.themeClicked(this.themes['themes'][this.state.activeTheme - 1])
+                    }
+                })
                 .catch(error => console.error(error))
         }
     }
