@@ -1,3 +1,51 @@
 .navbar-brand {
     cursor: pointer;
 }
+
+.tui-image-editor-container {
+    border-radius: 0.3rem;
+    border: 1px solid #dee2e6 !important;
+}
+
+.tui-image-editor-header {
+    display: none;
+}
+
+.tui-image-editor-container .tui-image-editor-controls {
+    background: #343a40 !important;
+    padding-bottom: 12px !important;
+    height: 65px;
+}
+
+.tui-image-editor-container .tui-image-editor-icpartition {
+    display: none;
+}
+
+.tui-image-editor-icpartition {
+    background: #5c5c5c !important;
+}
+
+.tui-image-editor-submenu {
+    padding: 4px !important;
+}
+
+.tui-image-editor-canvas-container {
+    margin-top: 8px !important;
+}
+
+.tui-image-editor-container .tui-image-editor-submenu {
+    width: auto !important;
+    margin: 0 !important;
+}
+
+.tui-image-editor-container.bottom .tui-image-editor-submenu > div {
+    padding-bottom: 0 !important;
+}
+
+.dropdown-toggle {
+    padding: 0.2rem 0.5rem !important;
+}
+
+.tui-image-editor-container .tui-image-editor-main {
+    top: 0 !important;
+}

@@ -85,8 +85,8 @@
                         this.uploaded.push(file)
 
                         state.photos.push({
-                            'src': e.target.result,
-                            'tag': file.name.toLowerCase()
+                            src: e.target.result,
+                            tag: file.name.toLowerCase()
                         })
 
                         // TODO: Upload to imgur instead of this ghetto array

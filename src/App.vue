@@ -23,8 +23,13 @@
 </template>
 
 <script>
+    import PhotoEditor from './components/PhotoEditor'
+
     export default {
         name: 'App',
+        components: {
+            PhotoEditor
+        },
         props: {
             state: Object
         }
