@@ -2,7 +2,7 @@
     <div id="app">
         <b-navbar toggleable="lg" type="dark" variant="dark">
             <b-container>
-                <router-link tag="b-navbar-brand" to="/">Photo Book 📷</router-link>
+                <router-link tag="b-navbar-brand" to="/">📷 Photo Book</router-link>
 
                 <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
