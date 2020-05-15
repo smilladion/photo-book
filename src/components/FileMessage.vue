@@ -1,16 +1,16 @@
 <template>
     <div>
         <h6 class="text-muted text-center mt-4" v-if="uploadStarted">
-            Your files have been uploaded to the site.
+            Dine billeder er blevet uploadet til siden.
         </h6>
         <h6 class="text-muted text-center mt-4" v-else-if="filesEmpty">
-            Please select image files for uploading.
+            Vælg de billeder som skal uploades.
         </h6>
         <h6 class="text-muted text-center mt-4" v-else-if="filesValid">
-            {{ files.length }} photo{{ files.length > 1 ? 's were' : ' was'}} selected for upload, is this correct?
+            {{ files.length }} billede{{ files.length > 1 ? 'r' : ''}} blev valgt, er det korrekt?
         </h6>
         <h6 class="text-danger text-center mt-4" v-else>
-            {{ invalid.length }} file{{ files.length > 1 ? 's were' : ' was'}} not valid, please only upload images.
+            {{ invalid.length }} fil{{ files.length > 1 ? 'er' : ''}} var ikke gyldig{{ files.length > 1 ? 'e' : ''}}, kun billedfiler er tilladt.
         </h6>
     </div>
 </template>

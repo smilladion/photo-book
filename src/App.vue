@@ -8,9 +8,9 @@
 
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav class="ml-auto">
-                        <router-link exact-active-class="active" tag="b-nav-item" to="/">Home</router-link>
-                        <router-link exact-active-class="active" tag="b-nav-item" to="/gallery">View gallery</router-link>
-                        <router-link exact-active-class="active" tag="b-nav-item" to="/upload">Upload photos</router-link>
+                        <router-link exact-active-class="active" tag="b-nav-item" to="/">Hjem</router-link>
+                        <router-link exact-active-class="active" tag="b-nav-item" to="/gallery">Vis fotobog</router-link>
+                        <router-link exact-active-class="active" tag="b-nav-item" to="/upload">Tilføj billeder</router-link>
                     </b-navbar-nav>
                 </b-collapse>
             </b-container>

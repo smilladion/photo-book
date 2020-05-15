@@ -2,14 +2,14 @@
     <section>
         <b-jumbotron bg-variant="light" border-variant="muted" class="text-center" text-variant="muted">
             <b-container style="max-width: 30rem">
-                <h1>Greetings, human!</h1>
-                <p class="lead text-muted">This is your personal photo book, a place to store, view, and edit your photos online.</p>
+                <h1>Din digitale fotobog.</h1>
+                <p class="lead text-muted">For at komme i gang, klik på en af de nedenstående knapper og upload et billede fra din computer.</p>
                 <p>
                     <router-link to="/gallery">
-                        <b-button class="mr-1" variant="info">View gallery</b-button>
+                        <b-button class="mr-1" variant="info">Vis fotobog</b-button>
                     </router-link>
                     <router-link to="/upload">
-                        <b-button variant="dark">Add photos</b-button>
+                        <b-button variant="dark">Tilføj billeder</b-button>
                     </router-link>
                 </p>
             </b-container>

@@ -1,13 +1,13 @@
 <template>
     <section>
-        <h3>Your gallery</h3>
+        <h3>Din fotobog</h3>
 
         <hr>
 
         <b-alert :show="true" dismissible v-if="state.photos.length === 0" variant="info">
-            It looks like you have no photos uploaded! Visit
-            <router-link to="/upload">upload photos</router-link>
-            to add photos.
+            Det ser ud til du ikke har tilføjet nogle billeder endnu! Gå ind på
+            <router-link to="/upload">tilføj billeder</router-link>
+            for at oprette din fotobog.
         </b-alert>
 
         <ImageGrid :photos="state.photos"></ImageGrid>
