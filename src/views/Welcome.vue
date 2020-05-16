@@ -19,7 +19,13 @@
 
 <script>
     export default {
-        name: 'Welcome'
+        name: 'Welcome',
+        mounted() {
+            document.body.style.background = "url('https://i.imgur.com/CK3NmM1.jpg')";
+        },
+        destroyed() {
+            document.body.style.background = "";
+        }
     }
 </script>
 

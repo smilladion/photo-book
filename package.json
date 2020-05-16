@@ -22,6 +22,7 @@
     "@vue/cli-plugin-router": "~4.3.0",
     "@vue/cli-plugin-vuex": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
+    "v-img": "^0.2.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [

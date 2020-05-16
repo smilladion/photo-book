@@ -77,9 +77,6 @@
                     fontSize: '18px'
                 }
             },
-            photoClicked(photo) {
-                this.$router.push({name: 'Editor', params: {photo: photo}})
-            },
             themeClicked(theme) {
                 this.state.activeTheme = theme.id
                 this.styleObject.color = '#' + theme.styles.primaryColor
