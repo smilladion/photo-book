@@ -7,7 +7,7 @@
                           v-if="state.photos.length !== 0">Redigering
                 </b-button>
 
-                <b-dropdown right text="Vælg tema" variant="primary">
+                <b-dropdown right text="Vælg tema" variant="primary" v-if="state.photos.length !== 0">
                     <b-dropdown-item disabled v-if="themes === null">Loading themes</b-dropdown-item>
                     <template v-else>
                         <b-dropdown-item :active="state.activeTheme === -1" @click="resetTheme">Normal</b-dropdown-item>
@@ -29,7 +29,7 @@
         </b-alert>
 
         <h6 class="text-muted text-center my-4" v-if="state.photos.length !== 0">
-            Tryk på et foto for at redigere det.
+            Tryk på et foto for at se det i fuld skærm, eller rediger det gennem knappen til højre.
         </h6>
 
         <ImageGrid :editMode="editMode" :photos="state.photos" :styleObject="styleObject" @doneEditing="editMode=false"

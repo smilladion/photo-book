@@ -6,6 +6,7 @@ import Gallery from '../views/Gallery'
 import Upload from '../views/Upload'
 import Editor from '../views/Editor'
 import Save from '../views/Save'
+import Help from "../views/Help"
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,11 @@ const routes = [
                 next('/')
             }
         }
+    },
+    {
+        path: '/help',
+        name: 'Help',
+        component: Help
     },
     {
         path: '/save',
