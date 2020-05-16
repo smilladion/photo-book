@@ -7,7 +7,7 @@
                           v-if="state.photos.length !== 0">Redigering
                 </b-button>
 
-                <b-dropdown right text="Vælg tema" variant="primary" v-if="state.photos.length !== 0">
+                <b-dropdown right text="Vælg tema" v-if="state.photos.length !== 0" variant="primary">
                     <b-dropdown-item disabled v-if="themes === null">Loading themes</b-dropdown-item>
                     <template v-else>
                         <b-dropdown-item :active="state.activeTheme === -1" @click="resetTheme">Normal</b-dropdown-item>

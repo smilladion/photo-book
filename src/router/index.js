@@ -6,7 +6,7 @@ import Gallery from '../views/Gallery'
 import Upload from '../views/Upload'
 import Editor from '../views/Editor'
 import Save from '../views/Save'
-import Help from "../views/Help"
+import Help from '../views/Help'
 
 Vue.use(VueRouter)
 

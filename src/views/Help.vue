@@ -78,8 +78,9 @@
                 <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
                     <b-card-body>
                         <b-card-text>
-                            Du kan vælge at se alle dine billeder i fotobogen i fuld skærm. For at gøre dette skal du blot trykke på et billede, og så
-                            vil det åbne på siden. <br/><br/> Du kan trykke på "X" oppe i højre hjørne for at komme tilbage til den reelle fotobog. <br/><br/>
+                            Du kan vælge at se alle dine billeder i <router-link to="/gallery">fotobogen</router-link> i fuld skærm. For at gøre dette skal du
+                            blot trykke på et billede, og så vil det åbne på siden. <br/><br/> Du kan trykke på "X" oppe i højre hjørne for at komme tilbage
+                            til den reelle fotobog. <br/><br/>
                             Hvis du har mere end ét billede i fotobogen, så vil der være pile til venstre og højre side af skærmen, og ved tryk af disse
                             kan du se de andre billeder i fotobogen også, i den rækkefølge de er indsat i.
                         </b-card-text>
@@ -94,8 +95,8 @@
                 <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
                     <b-card-body>
                         <b-card-text>
-                            Til at starte med vil billederne i fotobogen have almindelige, sorte titler, og hvide baggrunde. Hvis du vil ændre på dette,
-                            så findes der forskellige temaer du kan afprøve. <br/><br/>
+                            Til at starte med vil billederne i <router-link to="/gallery">fotobogen</router-link> have almindelige, sorte titler, og
+                            hvide baggrunde. Hvis du vil ændre på dette, så findes der forskellige temaer du kan afprøve. <br/><br/>
                             Klik knappen "Vælg tema" oppe i højre hjørne af fotobogen, og du vil se de forskellige muligheder. Vælger du f.eks. "Rejsebog",
                             så vil billedernes baggrund skifte til orange, og titlerne til lilla.
                         </b-card-text>

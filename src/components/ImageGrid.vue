@@ -3,7 +3,7 @@
         <b-row cols="2" cols-lg="3">
             <b-col :key="photo.src" class="mb-4 text-center" v-for="(photo, index) in photos">
                 <div :style="styleObject">
-                    <img v-img:gal :alt="photo.tag" :src="photo.src" :style="styleObject" class="img-fluid img-thumbnail"/>
+                    <img :alt="photo.tag" :src="photo.src" :style="styleObject" class="img-fluid img-thumbnail" v-img:gal/>
                     <h4 :style="styleObject" class="text-center my-0" v-if="!editMode">{{ photo.tag }}</h4>
                     <b-input :style="titleInputStyle" class="text-center" placeholder="Enter a title" size="lg" v-else v-model="photo.tag"></b-input>
                 </div>

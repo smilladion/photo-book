@@ -21,10 +21,10 @@
     export default {
         name: 'Welcome',
         mounted() {
-            document.body.style.background = "url('https://i.imgur.com/CK3NmM1.jpg')";
+            document.body.style.background = 'url(\'https://i.imgur.com/CK3NmM1.jpg\')'
         },
         destroyed() {
-            document.body.style.background = "";
+            document.body.style.background = ''
         }
     }
 </script>
