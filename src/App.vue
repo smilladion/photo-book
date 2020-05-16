@@ -11,6 +11,7 @@
                         <router-link exact-active-class="active" tag="b-nav-item" to="/">Hjem</router-link>
                         <router-link exact-active-class="active" tag="b-nav-item" to="/gallery">Vis fotobog</router-link>
                         <router-link exact-active-class="active" tag="b-nav-item" to="/upload">Tilføj billeder</router-link>
+                        <router-link exact-active-class="active" tag="b-nav-item" to="/save">Load-Save</router-link>
                     </b-navbar-nav>
                 </b-collapse>
             </b-container>

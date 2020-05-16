@@ -8,7 +8,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Titel</span>
             </div>
-            <input type="text" class="form-control" v-model="newName" :placeholder="photo.tag" :aria-label="photo.tag" aria-describedby="basic-addon1">
+            <input :aria-label="photo.tag" :placeholder="photo.tag" aria-describedby="basic-addon1" class="form-control" type="text" v-model="newName">
         </div>
 
         <PhotoEditor :photo="photo" ref="photo-editor"></PhotoEditor>

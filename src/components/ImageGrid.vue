@@ -1,9 +1,19 @@
 <template>
     <div>
         <b-row cols="2" cols-lg="3">
-            <b-col :key="photo.src" class="mb-4" v-for="photo in photos">
-                <img :alt="photo.tag" :style="styleObject" :src="photo.src" @click="$emit('photoClicked', photo)" class="img-fluid img-thumbnail"/>
-                <h6 v-text="photo.tag" :style="styleObject" class="text-center"></h6>
+            <b-col :key="photo.src" class="mb-4 text-center" v-for="(photo, index) in photos">
+                <div :style="styleObject">
+                    <img :alt="photo.tag" :src="photo.src" :style="styleObject" @click="$emit('photoClicked', photo)" class="img-fluid img-thumbnail"/>
+                    <h4 :style="styleObject" class="text-center my-0" v-if="!editMode">{{ photo.tag }}</h4>
+                    <b-input :style="titleInputStyle" class="text-center" placeholder="Enter a title" size="lg" v-else v-model="photo.tag"></b-input>
+                </div>
+                <template v-if="editMode">
+                    <div class="mt-2">
+                        <b-button @click="editPhoto(photo)" class="mr-1" size="sm" variant="success">Edit</b-button>
+                        <b-button @click="photos.splice(index, 1)" class="mr-1" size="sm" variant="danger">Delete</b-button>
+                        <b-button @click="$emit('doneEditing')" size="sm" variant="info">Save</b-button>
+                    </div>
+                </template>
             </b-col>
         </b-row>
     </div>
@@ -14,7 +24,21 @@
         name: 'ImageGrid',
         props: {
             photos: Array,
-            styleObject: Object
+            styleObject: Object,
+            editMode: Boolean
+        },
+        data() {
+            return {
+                titleInputStyle: {
+                    fontSize: '1rem',
+                    fontFamily: 'sans-serif'
+                }
+            }
+        },
+        methods: {
+            editPhoto(photo) {
+                this.$router.push({name: 'Editor', params: {photo: photo}})
+            }
         }
     }
 </script>

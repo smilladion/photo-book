@@ -3,11 +3,16 @@
         <b-row>
             <b-col><h3 class="text-left">Din fotobog</h3></b-col>
             <b-col class="text-right">
+                <b-button :variant="editMode ? 'danger' : 'outline-danger'" @click="editMode=!editMode" class="mr-2" size="sm"
+                          v-if="state.photos.length !== 0">Edit mode
+                </b-button>
+
                 <b-dropdown right text="Vælg tema" variant="outline-primary">
                     <b-dropdown-item disabled v-if="themes === null">Loading themes</b-dropdown-item>
                     <template v-else>
                         <b-dropdown-item :active="state.activeTheme === -1" @click="resetTheme">Normal</b-dropdown-item>
-                        <b-dropdown-item :active="theme.id === state.activeTheme" :key="theme.id" @click="themeClicked(theme)" v-for="theme in themes['themes']">
+                        <b-dropdown-item :active="theme.id === state.activeTheme" :key="theme.id" @click="themeClicked(theme)"
+                                         v-for="theme in themes['themes']">
                             {{ theme.name }}
                         </b-dropdown-item>
                     </template>
@@ -27,7 +32,8 @@
             Tryk på et foto for at redigere det.
         </h6>
 
-        <ImageGrid :photos="state.photos" :styleObject="styleObject" @photoClicked="photoClicked"></ImageGrid>
+        <ImageGrid :editMode="editMode" :photos="state.photos" :styleObject="styleObject" @doneEditing="editMode=false"
+                   @photoClicked="photoClicked"></ImageGrid>
     </section>
 </template>
 
@@ -46,7 +52,7 @@
             return {
                 state: this.sharedState,
                 themes: null,
-
+                editMode: false,
                 styleObject: {
                     color: '',
                     backgroundColor: 'white',

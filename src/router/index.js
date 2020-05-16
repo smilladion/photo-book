@@ -5,6 +5,7 @@ import Welcome from '../views/Welcome'
 import Gallery from '../views/Gallery'
 import Upload from '../views/Upload'
 import Editor from '../views/Editor'
+import Save from '../views/Save'
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ const routes = [
                 next('/')
             }
         }
+    },
+    {
+        path: '/save',
+        name: 'Save',
+        component: Save
     }
 ]
 

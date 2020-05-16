@@ -18,6 +18,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 let state = {
+    title: 'My Photo Book',
     photos: [],
     activeTheme: -1
 }
