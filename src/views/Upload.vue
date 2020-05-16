@@ -58,10 +58,12 @@
                 this.invalid = invalid
             },
             startClicked() {
+                // Don't allow upload if some files are invalid
                 if (this.invalid.length !== 0) {
                     return
                 }
 
+                // Set variable to show progress bar
                 this.uploadStarted = true
                 this.uploaded = []
 
@@ -69,29 +71,38 @@
 
                 let index = 0
 
+                // Callback for when all files processed, used for debugging
                 let doneFiles = () => {
-                    // All images parsed! :)
+                    // All images parsed
                 }
 
+                // Read file callback for file reader API
                 let readFile = (files, state) => {
+                    // If current file is last file, then run doneFiles() callback
                     if (index >= files.length) {
                         doneFiles()
                         return
                     }
 
+                    // Fetch current file
                     let file = files[index]
 
+                    // File reader callback
                     fileReader.onload = e => {
+                        // Add complete file to uploaded array
                         this.uploaded.push(file)
 
+                        // Add resulting image to photos gallery
                         state.photos.push({
                             src: e.target.result,
                             tag: file.name.toLowerCase().slice(0, -4)
                         })
 
+                        // Call next file for reading
                         readFile(files, state)
                     }
 
+                    // Read file as data blob URI
                     fileReader.readAsDataURL(file)
                     index++
                 }
@@ -99,11 +110,13 @@
                 readFile(this.files, this.state)
             },
             resetClicked() {
+                // Clear all selected files using reset method
                 this.$refs['file-input'].reset()
             }
         },
         watch: {
             files(value, oldValue) {
+                // When files variable changes, set uploadStarted to false to hide progress bar
                 this.uploadStarted = false
             }
         }

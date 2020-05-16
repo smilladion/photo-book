@@ -23,7 +23,16 @@ Vue.use(VueImg)
 let state = {
     title: 'My Photo Book',
     photos: [],
-    activeTheme: -1
+    activeTheme: -1,
+    styleObject: {
+        color: '',
+        backgroundColor: 'white',
+        border: '8px solid white',
+        borderRadius: '0',
+        fontFamily: '',
+        padding: '0',
+        fontSize: '18px'
+    }
 }
 
 new Vue({

@@ -32,7 +32,7 @@
             Tryk på et foto for at se det i fuld skærm, eller rediger det gennem knappen til højre.
         </h6>
 
-        <ImageGrid :editMode="editMode" :photos="state.photos" :styleObject="styleObject" @doneEditing="editMode=false"
+        <ImageGrid :editMode="editMode" :photos="state.photos" :styleObject="this.state.styleObject" @doneEditing="editMode=false"
                    @photoClicked="photoClicked"></ImageGrid>
     </section>
 </template>
@@ -52,22 +52,13 @@
             return {
                 state: this.sharedState,
                 themes: null,
-                editMode: false,
-                styleObject: {
-                    color: '',
-                    backgroundColor: 'white',
-                    border: '8px solid white',
-                    borderRadius: '0',
-                    fontFamily: '',
-                    padding: '0',
-                    fontSize: '18px'
-                }
+                editMode: false
             }
         },
         methods: {
             resetTheme() {
                 this.state.activeTheme = -1
-                this.styleObject = {
+                this.state.styleObject = {
                     color: '',
                     backgroundColor: 'white',
                     border: '8px solid white',
@@ -79,27 +70,31 @@
             },
             themeClicked(theme) {
                 this.state.activeTheme = theme.id
-                this.styleObject.color = '#' + theme.styles.primaryColor
-                this.styleObject.backgroundColor = '#' + theme.styles.secondaryColor
-                this.styleObject.border = '8px solid #' + theme.styles.secondaryColor
-                this.styleObject.fontFamily = theme.styles.fontName
-                this.styleObject.borderRadius = '0px'
+
+                this.state.styleObject.color = '#' + theme.styles.primaryColor
+                this.state.styleObject.backgroundColor = '#' + theme.styles.secondaryColor
+                this.state.styleObject.border = '8px solid #' + theme.styles.secondaryColor
+                this.state.styleObject.fontFamily = theme.styles.fontName
+                this.state.styleObject.borderRadius = '0px'
 
                 if (theme.name === 'Børnebog') {
-                    this.styleObject.fontSize = '30px'
+                    this.state.styleObject.fontSize = '30px'
                 } else if (theme.name === 'Rejsebog') {
-                    this.styleObject.fontSize = '18px'
+                    this.state.styleObject.fontSize = '18px'
                 } else if (theme.name === 'Formel') {
-                    this.styleObject.fontSize = '20px'
+                    this.state.styleObject.fontSize = '20px'
                 }
             }
         },
         mounted() {
+            // Fetch themes using a GET request
             fetch('https://itu-sdbg-s2020.now.sh/api/themes')
-                .then(stream => stream.json())
+                .then(stream => stream.json()) // Convert to JSON
                 .then(json => {
+                    // Store JSON in themes variable
                     this.themes = json
 
+                    // If active theme is not default, reapply/update the theme
                     if (this.state.activeTheme !== -1) {
                         this.themeClicked(this.themes['themes'][this.state.activeTheme - 1])
                     }

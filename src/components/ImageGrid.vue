@@ -44,6 +44,10 @@
 </script>
 
 <style scoped>
+    h4 {
+        word-wrap: anywhere;
+    }
+
     img {
         cursor: pointer;
     }
