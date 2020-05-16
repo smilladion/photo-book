@@ -9,9 +9,9 @@
                 </div>
                 <template v-if="editMode">
                     <div class="mt-2">
-                        <b-button @click="editPhoto(photo)" class="mr-1" size="sm" variant="success">Edit</b-button>
-                        <b-button @click="photos.splice(index, 1)" class="mr-1" size="sm" variant="danger">Delete</b-button>
-                        <b-button @click="$emit('doneEditing')" size="sm" variant="info">Save</b-button>
+                        <b-button @click="editPhoto(photo)" class="mr-2" size="sm" variant="info">Rediger</b-button>
+                        <b-button @click="$emit('doneEditing')" class="mr-2" size="sm" variant="success">Gem</b-button>
+                        <b-button @click="photos.splice(index, 1)" size="sm" variant="danger">Slet</b-button>
                     </div>
                 </template>
             </b-col>

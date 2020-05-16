@@ -1,28 +1,28 @@
 <template>
     <section>
-        <h3>Load-Save</h3>
+        <h3>Gem eller åbn en fotobog</h3>
 
         <hr>
 
         <b-card-group deck>
-            <b-card align="center" header="Import">
+            <b-card align="center" header="Importering">
                 <b-card-text>
-                    <p>To import a <code>photobook.json</code>, select a file:</p>
+                    <p>For at importere en <code>photobook.json</code>, vælg en fil:</p>
 
                     <b-spinner v-if="parsing"></b-spinner>
-                    <b-form-file @input="this.import" accept="application/json" browse-text="Browse"
-                                 drop-placeholder="You're one of those drag and drop assholes, aren't you?" placeholder="Upload your photobook.json file here"
+                    <b-form-file @input="this.import" accept="application/json" browse-text="Gennemse"
+                                 drop-placeholder="Slip for at åbne" placeholder="Upload din photobook.json fil her"
                                  ref="file-input" v-else v-model="importFile"></b-form-file>
 
-                    <p class="mt-3 mb-0" v-if="fileInvalid">The file you selected is not a valid <code>photobook.json</code> 😡</p>
+                    <p class="mt-3 mb-0 text-danger" v-if="fileInvalid">Filen du har valgt er ikke en gyldig .json-fil.</p>
                 </b-card-text>
             </b-card>
 
-            <b-card align="center" header="Export">
+            <b-card align="center" header="Eksportering">
                 <b-card-text>
-                    <p>To export your <code>photobook.json</code>, click here:</p>
+                    <p>For at eksportere din <code>photobook.json</code>, klik her:</p>
 
-                    <b-button @click="this.export" variant="outline-success">Export JSON</b-button>
+                    <b-button @click="this.export" variant="outline-primary">Eksporter JSON</b-button>
                     <a download="photobook.json" ref="data-file" v-show="false"/>
                 </b-card-text>
             </b-card>

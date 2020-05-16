@@ -4,10 +4,10 @@
             <b-col><h3 class="text-left">Din fotobog</h3></b-col>
             <b-col class="text-right">
                 <b-button :variant="editMode ? 'danger' : 'outline-danger'" @click="editMode=!editMode" class="mr-2" size="sm"
-                          v-if="state.photos.length !== 0">Edit mode
+                          v-if="state.photos.length !== 0">Redigering
                 </b-button>
 
-                <b-dropdown right text="Vælg tema" variant="outline-primary">
+                <b-dropdown right text="Vælg tema" variant="primary">
                     <b-dropdown-item disabled v-if="themes === null">Loading themes</b-dropdown-item>
                     <template v-else>
                         <b-dropdown-item :active="state.activeTheme === -1" @click="resetTheme">Normal</b-dropdown-item>
