@@ -3,7 +3,7 @@
         <b-row>
             <b-col><h3 class="text-left">Din fotobog</h3></b-col>
             <b-col class="text-right">
-                <b-button :variant="editMode ? 'danger' : 'outline-danger'" @click="editMode=!editMode" class="mr-2" size="sm"
+                <b-button :variant="editMode ? 'info' : 'outline-info'" @click="editMode=!editMode" class="mr-2" size="sm"
                           v-if="state.photos.length !== 0">Redigering
                 </b-button>
 
