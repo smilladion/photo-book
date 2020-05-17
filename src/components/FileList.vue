@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Smilla -->
+<!-- Denne står for at vise brugerens valgte filer på skærmen, og om de er ugyldige eller ej. -->
 <template>
     <div>
         <b-list-group class="mt-4">

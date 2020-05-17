@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Ida og Esther -->
+<!-- Siden til at gemme og åbne en fotobog i JSON format. -->
 <template>
     <section>
         <h3>Gem eller åbn en fotobog</h3>
@@ -47,35 +49,35 @@
         },
         methods: {
             import() {
-                // Set parsing = true (this shows the spinner)
+                // Sætter parsing = true (viser loading-hjulet)
                 this.parsing = true
-                // Reset invalid file prompt (hides the error)
+                // Nulstiller ugyldig fil tekst (fjerner fejlen)
                 this.fileInvalid = false
 
-                // Do nothing is no file was selected
+                // Gør ingenting hvis ingen fil var valgt
                 if (this.importFile === null) {
-                    // No longer parsing (hides spinner)
+                    // Parser ikke længere (viser loading-hjulet)
                     this.parsing = false
                     return
                 }
 
-                // Make sure it is a JSON file first
+                // Sørger for at filen er en JSON fil
                 if (!this.importFile.type.endsWith('json')) {
                     this.fileInvalid = true // Shows error prompt
                     this.parsing = false // Hides spinner
                     return
                 }
 
-                // Creates a new file reader
+                // Opretter en ny file reader
                 const fileReader = new FileReader()
 
-                // File reader onload is triggered when file data is available
+                // "File reader onload" bliver kørt når fildata er tilgængelig
                 fileReader.onload = e => {
                     try {
-                        // Try to parse this as a JSON file
+                        // Forsøger at parse dette som en JSON fil
                         this.onJsonLoaded(JSON.parse(e.target.result))
                     } catch (error) {
-                        // Show invalid file prompt if parsing failed
+                        // Vis ugyldig fil tekst hvis parsing fejlede
                         this.fileInvalid = true
                         this.parsing = false
 
@@ -85,29 +87,29 @@
                     }
                 }
 
-                // Read file and call onload when done
+                // Læs fil og kald "onload" når færdig
                 fileReader.readAsText(this.importFile)
             },
             export() {
-                // To download from data blob, encode JSON state into data URI on invisible link
+                // For at downloade fra "data blob", krypter JSON-tilstand til data URI på et usynligt link
                 this.$refs['data-file'].href = 'data:application/json,' + encodeURIComponent(JSON.stringify(this.encodeState(this.state)))
-                // Force click the link to download the data
+                // Tvangsklik linket for at downloade dataen
                 this.$refs['data-file'].click()
-                // Discard the data to avoid slow browser
+                // Smid dataen væk for at undgå en langsom browser
                 this.$refs['data-file'].href = ''
             },
             encodeState(data) {
-                // Create empty javascript object
+                // Opret tomt JS objekt
                 let encodedJson = {}
 
-                // Set title active theme and pages keys from current state
+                // Sæt titel og aktivt tema fra den nuværende "state"
                 encodedJson.title = this.state.title
                 encodedJson.activeTheme = this.state.activeTheme
                 encodedJson.pages = []
 
-                // For each photo in data, add to encoded JSON
+                // For hvert billede i dataen, tilføj til den krypterede JSON
                 for (const photo of data.photos) {
-                    // Correctly format page JSON for API
+                    // Formater JSON side til API
                     encodedJson.pages.push({
                         image_url: photo.src,
                         content: [
@@ -119,38 +121,38 @@
                     })
                 }
 
-                // Return final javascript object now built
+                // Returner endelige JS objekt, nu lavet
                 return encodedJson
             },
             onJsonLoaded(data) {
-                // Run the data through the validate API
+                // Kør dataen gennem validation API'en
                 this.validate(data, this.onJsonValidated)
             },
             onJsonValidated(data) {
-                // Set title from JSON
+                // Sæt titel fra JSON
                 this.state.title = data['title']
-                // Remove old photos
+                // Fjern gamle billeder
                 this.state.photos = []
 
-                // if active theme exists, set it
+                // Hvis et aktivt tema eksisterer, sæt det
                 if ('activeTheme' in data) {
                     this.state.activeTheme = data['activeTheme']
                 }
 
-                // Set photo tag to unknown as fallback/safety precaution
+                // Sæt billedets tag til "unknown" som en sikkerhedsforanstaltning
                 let tag = 'unknown'
 
-                // Add each photo from pages array
+                // Tilføj hvert billede fra "pages" arrayet
                 for (const page of data['pages']) {
-                    // Try and find tag from all of the photo content data
+                    // Prøv at finde et tag fra billedets indhold
                     for (const content of page.content) {
                         if (content.type === 'title') {
-                            // Tag found, set variable to tag
+                            // Tag fundet, sæt variabel til tag
                             tag = content.text
                         }
                     }
 
-                    // Add new photo with correct tag, url and content
+                    // Tilføj et nyt billede med det korrekte tag, url og indhold
                     this.state.photos.push(
                         {
                             src: page.image_url,
@@ -159,41 +161,41 @@
                     )
                 }
 
-                // Navigate to gallery once upload is complete
+                // Naviger til fotobogen når upload er færdiggjort
                 this.$router.push('/gallery')
 
-                // Hide spinner
+                // Skjul loading-hjulet
                 this.parsing = false
             },
             validate(data, callback) {
                 fetch(
-                    // Send a POST request to validate API
+                    // Send en POST request for at validere API
                     'https://itu-sdbg-s2020.now.sh/api/validate',
                     {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
-                            // The API has a bug that does not set correct cross-site headers
+                            // API'en har en fejl som ikke sætter de korrekte "cross-site headers"
                             // TODO: 'Content-Type': 'application/json'
                         },
-                        // Set POST data to parsed JSON
+                        // Sæt POST data til parset JSON
                         body: data
                     }
                 )
-                    .then(stream => stream.json()) // Convert string to JSON
+                    .then(stream => stream.json()) // Konverter string til JSON
                     .then(json => {
-                        // Check if validation was successful
+                        // Tjek om validering var succesfuld
                         if (json['success']) {
                             callback(data)
                         } else {
-                            // Show error message (when API is fixed)
+                            // Vis fejlbesked (når/hvis API fejlen er fikset)
                             // this.fileInvalid = true
                             // this.parsing = false
-                            callback(data) // Comment when API fixed
+                            callback(data) // Udkommenter når API virker
                         }
                     })
                     .catch(error => {
-                        // API/parsing error show error message
+                        // API/parsing fejl, vis fejlbesked
                         console.error(error)
 
                         this.fileInvalid = true

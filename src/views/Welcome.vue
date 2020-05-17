@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Smilla -->
+<!-- Hjemmesidens forside. -->
 <template>
     <section>
         <b-jumbotron bg-variant="light" border-variant="muted" class="text-center" text-variant="muted">

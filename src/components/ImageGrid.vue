@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Ditte -->
+<!-- Skaber et "gitter" hvor fotobogens billeder vises på hjemmesiden, samt mulighederne for redigering. -->
 <template>
     <div>
         <b-row cols="2" cols-lg="3">
@@ -5,7 +7,7 @@
                 <div :style="styleObject">
                     <img :alt="photo.tag" :src="photo.src" :style="styleObject" class="img-fluid img-thumbnail" v-img:gal/>
                     <h4 :style="styleObject" class="text-center my-0" v-if="!editMode">{{ photo.tag }}</h4>
-                    <b-input :style="titleInputStyle" class="text-center" placeholder="Enter a title" size="lg" v-else v-model="photo.tag"></b-input>
+                    <b-input :style="titleInputStyle" class="text-center" placeholder="Indtast en titel" size="lg" v-else v-model="photo.tag"></b-input>
                 </div>
                 <template v-if="editMode">
                     <div class="mt-2">

@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Esther -->
+<!-- Den overordnede side til redigering af billeder, som man kommer ind på ved at trykke "Rediger". -->
 <template>
     <section>
         <h3>Rediger billede</h3>
@@ -44,6 +46,7 @@
                 this.$refs['photo-editor'].saveBase64()
                 this.returnPrevious()
 
+                // Sætter billedets nye navn hvis det er blevet redigeret
                 if (this.newName.length > 0) {
                     this.photo.tag = this.newName
                 }

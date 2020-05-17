@@ -1,3 +1,5 @@
+/* Ekstra CSS til at style specifikke elementer af siden. */
+
 @font-face {
     font-family: Waltograph;
     src: url("../src/assets/waltograph42.otf") format("opentype");

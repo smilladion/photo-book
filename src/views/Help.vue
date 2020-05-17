@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Ida -->
+<!-- Hjælpesiden hvor man kan få instruktioner på at bruge fotobogen. -->
 <template>
     <section>
         <h3>Hjælp til fotobogen</h3>
@@ -8,7 +10,7 @@
         </h6>
 
         <!--
-        Kode fundet fra Bootstrap Vue's dokumentation (også tilfældet for andre komponenter)
+        Kode fundet fra Bootstrap Vue's dokumentation (også tilfældet for en del andre b-komponenter)
         https://bootstrap-vue.org/docs/components/collapse
         -->
         <div role="tablist">

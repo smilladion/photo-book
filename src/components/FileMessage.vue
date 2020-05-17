@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Smilla -->
+<!-- Viser en vejledende tekst baseret på brugerens input og hvad de har gjort indtil videre i upload-processen. -->
 <template>
     <div>
         <h6 class="text-muted text-center mt-4" v-if="uploadStarted">
@@ -39,6 +41,7 @@
             files(value, oldValue) {
                 this.invalid = []
 
+                // Tilføjer ugyldige filer til deres egen liste
                 for (const file of this.files) {
                     if (!file.type.startsWith('image')) {
                         this.invalid.push(file)

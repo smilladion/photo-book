@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Esther -->
+<!-- UI til redigering af et billede (Toast Image Editor). -->
 <template>
     <ImageEditor :options="options" include-ui ref="image-editor"></ImageEditor>
 </template>
@@ -13,13 +15,13 @@
     import 'tui-color-picker/dist/tui-color-picker.css'
     import 'tui-image-editor/dist/tui-image-editor.css'
 
-    const SEXY_THEME = {
+    const THEME = {
         'common.bisize.width': '0',
         'common.bisize.height': '0',
         'common.backgroundColor': '#f8f9fa',
         'common.border': 'none',
 
-        // Icons theme
+        // Ikon tema
         'menu.normalIcon.color': '#c9c9c9',
         'menu.disabledIcon.color': '#727272',
         'menu.hoverIcon.color': '#e9e9e9',
@@ -43,7 +45,7 @@
                             path: this.photo.src,
                             name: this.photo.tag
                         },
-                        theme: SEXY_THEME,
+                        theme: THEME,
                         uiSize: {
                             width: '100%',
                             height: '672px'

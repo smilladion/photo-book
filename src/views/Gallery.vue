@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Ditte og Kirstine -->
+<!-- Siden til selve fotobogen og alle dens elementer. -->
 <template>
     <section>
         <b-row>
@@ -68,7 +70,7 @@
                     fontSize: '18px'
                 }
             },
-            themeClicked(theme) {
+            themeClicked(theme) { // Skifter bogens tema til det valgte fra dropdown
                 this.state.activeTheme = theme.id
 
                 this.state.styleObject.color = '#' + theme.styles.primaryColor
@@ -87,14 +89,14 @@
             }
         },
         mounted() {
-            // Fetch themes using a GET request
+            // Henter temaer ved brug af GET request
             fetch('https://itu-sdbg-s2020.now.sh/api/themes')
-                .then(stream => stream.json()) // Convert to JSON
+                .then(stream => stream.json()) // Konverter til JSON
                 .then(json => {
-                    // Store JSON in themes variable
+                    // Gem JSON i "themes" variabel
                     this.themes = json
 
-                    // If active theme is not default, reapply/update the theme
+                    // Hvis det aktive tema ikke er det normale, opdater temaet
                     if (this.state.activeTheme !== -1) {
                         this.themeClicked(this.themes['themes'][this.state.activeTheme - 1])
                     }

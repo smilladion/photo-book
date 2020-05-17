@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Smilla -->
+<!-- Den overordnede hjemmeside med navigationen. -->
 <template>
     <div id="app">
         <b-navbar toggleable="lg" type="dark" variant="dark">

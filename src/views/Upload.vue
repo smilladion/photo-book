@@ -1,3 +1,5 @@
+<!-- Komponent skrevet af: Smilla og Kirstine -->
+<!-- Siden hvor brugeren kan uploade sine billeder til fotobogen. -->
 <template>
     <section>
         <h3>Tilføj billeder</h3>
@@ -58,12 +60,12 @@
                 this.invalid = invalid
             },
             startClicked() {
-                // Don't allow upload if some files are invalid
+                // Tillad ikke upload hvis nogle af filerne er ugyldige
                 if (this.invalid.length !== 0) {
                     return
                 }
 
-                // Set variable to show progress bar
+                // Sæt variabel til at vise progress bar
                 this.uploadStarted = true
                 this.uploaded = []
 
@@ -71,38 +73,35 @@
 
                 let index = 0
 
-                // Callback for when all files processed, used for debugging
                 let doneFiles = () => {
-                    // All images parsed
+                    // Alle billeder parset
                 }
 
-                // Read file callback for file reader API
                 let readFile = (files, state) => {
-                    // If current file is last file, then run doneFiles() callback
+                    // Hvis den nuværende fil er den sidste fil, så kør doneFiles()
                     if (index >= files.length) {
                         doneFiles()
                         return
                     }
 
-                    // Fetch current file
+                    // Hent nuværende fil
                     let file = files[index]
 
-                    // File reader callback
                     fileReader.onload = e => {
-                        // Add complete file to uploaded array
+                        // Tilføj den færdige fil til "uploaded" array
                         this.uploaded.push(file)
 
-                        // Add resulting image to photos gallery
+                        // Tilføj billedet til fotobogen
                         state.photos.push({
                             src: e.target.result,
                             tag: file.name.toLowerCase().slice(0, -4)
                         })
 
-                        // Call next file for reading
+                        // Hent den næste fil til at blive læst
                         readFile(files, state)
                     }
 
-                    // Read file as data blob URI
+                    // Læs fil som data blob URI
                     fileReader.readAsDataURL(file)
                     index++
                 }
@@ -110,13 +109,13 @@
                 readFile(this.files, this.state)
             },
             resetClicked() {
-                // Clear all selected files using reset method
+                // Fjern alle valgte filer
                 this.$refs['file-input'].reset()
             }
         },
         watch: {
             files(value, oldValue) {
-                // When files variable changes, set uploadStarted to false to hide progress bar
+                // Når "files" variablen ændrer sig, sæt uploadStarted til false for at skjule progress baren
                 this.uploadStarted = false
             }
         }

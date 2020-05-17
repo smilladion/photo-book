@@ -1,3 +1,5 @@
+// Komponent skrevet af: Smilla
+// Holder styr på de forskellige sider af hjemmesiden så man kan navigere mellem dem.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
